@@ -1,0 +1,32 @@
+{
+  "name": "hteaml-project-2",
+  "version": "1.0.0",
+  "description": "- Newton Armstrong\r - Asher Bergtraun\r - Thomas Walker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Narmstrongv/HTeamL-Project-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Narmstrongv/HTeamL-Project-2/issues"
+  },
+  "homepage": "https://github.com/Narmstrongv/HTeamL-Project-2#readme",
+  "dependencies": {
+    "bcrpyt": "^2.0.0",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
