@@ -8,6 +8,8 @@
 //controllers = routes
 //index here collects routes for server connection
 
+//this is more for back-end
+
 const router = require('express').Router();
 
 //insert routes here - can use as template
