@@ -3,3 +3,5 @@
 //const User = require('./User'); <-path of model
 
 //module.exports = { User };
+
+//models are like classes that we define, like a mold for the data
