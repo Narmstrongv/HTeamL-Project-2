@@ -17,4 +17,15 @@ const userRoutes = require('./user-routes.js');
 
 router.use('/users', userRoutes);
 
+
+
+//added for post model
+const postRoutes = require('./post-routes.js');
+
+router.user('/posts', postRoutes);
+
+
+
+
+
 module.exports = router;
