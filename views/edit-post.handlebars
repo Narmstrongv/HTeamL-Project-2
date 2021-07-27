@@ -1,0 +1,32 @@
+<article>
+  <a href="/profile" class="is-pulled-right"> &larr; Back to Profile</a>
+  <h2 class="title">Create a New Recipe Post</h2><hr>
+
+  <form class="new-post-form">
+    <div>
+      <label for="post-title">Recipe Name:</label>
+      <input class="input" type="text" id="post-title" name="post-title" placeholder="insert blog title here"/>
+    </div>
+    <div>
+      <label for="post-content">Leftover Ingredient:</label>
+      <input class="textarea is-large" id="ingredient" name="ingredient" placeholder="insert leftover ingredient used here"/>
+    </div>
+    <div>
+      <label for="post-content">Recipe Instructions:</label>
+      <input class="textarea is-large" id="post-content" name="post-content" placeholder="insert blog content here"/>
+    </div>
+    <div class="is-pulled-right">
+       You created this on {{format_date post.created_at}}
+      |
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+    </div>
+    <button type="submit" class="button is-success">Save Post</button>
+    <button type="button" class="button is-danger delete-post-btn">Delete Post</button>
+  </form>
+</article>
+
+{{> comments post.comments}}
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>
