@@ -22,7 +22,7 @@ router.use('/users', userRoutes);
 //added for post model
 const postRoutes = require('./post-routes.js');
 
-router.user('/posts', postRoutes);
+router.use('/posts', postRoutes);
 
 
 
