@@ -51,11 +51,38 @@ router.post('/', (req, res) => {
       });
 });
 
+//13.2.6 add for user authentication -- login 
+router.post('/login', (req, res) => {
+  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that email address!' });
+        return;
+      }
+  
+      // Verify user
+      const validPassword = dbUserData.checkPassword(req.body.password);
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+      
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });  
+  });
+
+
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     //.update similar to .create with key/value info
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
     User.update(req.body, {
+      //added to allow for individual (specified) hooks as well as bulk hooks (not the default)
+      individualHooks: true,
       where: {
         id: req.params.id
       }

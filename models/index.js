@@ -4,5 +4,9 @@
 
 const User = require('./User'); //<-path of model
 
-module.exports = { User };
+//added Post model 
+
+const Post = require('./Post'); // <-- path of Post model 
+
+module.exports = { User, Post };
 
