@@ -28,18 +28,7 @@ Post.init(
     }
     }, 
     {
-       hooks: {
-            // set up beforeCreate lifecycle "hook" functionality
-        async beforeCreate(newData) {
-            newData.password = await bcrypt.hash(newData.password, 10);
-               return newData;
-             
-           },
-           async beforeUpdate(updatedData){
-             updatedData.password = await bcrypt.hash(updatedData.password, 10);
-             return updatedData; 
-           }
-        },
+
         //Defines table config opts
         sequelize,
         timestamps: false,
