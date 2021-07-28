@@ -1,4 +1,5 @@
 //basic server setup from 13.1.6
+//server opens on http://localhost:3003/api/etc.
 
 const express = require('express');
 const routes = require('./controllers');
