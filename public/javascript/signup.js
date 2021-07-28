@@ -8,6 +8,20 @@ async function signupFormHandler(event) {
     const twitter = document.querySelector('#twitter-signup').value.trim();
     const github = document.querySelector('#github-signup').value.trim();
 
+    if (username && email && password) {
+        const response = await fetch('/api/users', {
+            method: 'post',
+            body: JSON.stringify({ username, email, twitter, github, password}),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            console.log('success');
+            document.location.replace('/dashboard');
+        } else {
+            alert(response.statusText);
+        }
+    }
 }
 //actively listen for user input to run js
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler)
