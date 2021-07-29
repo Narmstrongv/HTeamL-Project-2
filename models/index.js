@@ -8,5 +8,17 @@ const User = require('./User'); //<-path of model
 
 const Post = require('./Post'); // <-- path of Post model 
 
+
+// define model associations  
+
+User.hasMany(Post, {
+    foreignKey : 'user_id'
+});
+
+Post.belongsTo( User, {
+    foreignKey: 'user_id'
+});
+
+
 module.exports = { User, Post };
 

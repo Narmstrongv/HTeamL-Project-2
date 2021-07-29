@@ -4,7 +4,15 @@ const {Post}= require('../../models');
 router.get('/', (req, res) => {
     // Access Post model
 
-    User.findAll()
+    User.findAll({
+        attributes: ['id', 'title', 'body', 'created_at'],
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
         console.log(err);
