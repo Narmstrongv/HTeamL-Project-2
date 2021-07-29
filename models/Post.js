@@ -25,6 +25,13 @@ Post.init(
         validate: {
             len: [10]
         }
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
     }
     }, 
     {
@@ -34,7 +41,7 @@ Post.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user' 
+        modelName: 'post' 
     }
 );
 
