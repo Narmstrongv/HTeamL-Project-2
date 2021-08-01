@@ -15,14 +15,14 @@ const router = require('express').Router();
 //insert routes here - can use as template
 const userRoutes = require('./user-routes.js');
 
-router.use('/users', userRoutes);
-
-
-
 //added for post model
 const postRoutes = require('./post-routes.js');
 
+
+
+router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
+
 
 
 

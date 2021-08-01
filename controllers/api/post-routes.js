@@ -1,10 +1,19 @@
 const router = require('express').Router();
-const {Post}= require('../../models');
+const {Post, User}= require('../../models');
 // GET /api/post
 router.get('/', (req, res) => {
     // Access Post model
 
-    User.findAll()
+    Post.findAll({
+        attributes: ['id', 'title', 'body', 'created_at'],
+        order: [['created_at', 'DESC']], 
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
         console.log(err);
@@ -14,7 +23,74 @@ router.get('/', (req, res) => {
 
 // GET /api/users/1
 router.get('/:id', (req, res) => {
-    User.findOne({
+    Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', , 'title', 'body', 'created_at'],
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbPostData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
+
+// POST /api/users
+router.post('/', (req, res) => {
+    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+    Post.create({
+      title: req.body.title,
+      post_url: req.body.body,
+      user_id: req.body.user_id
+    })
+      .then(dbPostData => res.json(dbPostData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+// PUT /api/users/1
+router.put('/:id', (req, res) => {
+    Post.update(
+      {
+        title: req.body.title
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbPostData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
+// DELETE /api/users/1
+router.delete('/:id', (req, res) => {
+    Post.destroy({
       where: {
         id: req.params.id
       }
@@ -30,63 +106,6 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-});
-
-// POST /api/users
-router.post('/', (req, res) => {
-    //.create uses key/value pairs (i.e. UN, PW, Email) defined in the Model itself (i.e. User) 
-    User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then(dbPostData => res.json(dbPostData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
-
-// PUT /api/users/1
-router.put('/:id', (req, res) => {
-    //.update similar to .create with key/value info
-    // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-    User.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(dbPostData => {
-        if (!dbPostData[0]) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbPostData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
-
-// DELETE /api/users/1
-router.delete('/:id', (req, res) => {
-    User.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(dbPostData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbPostData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
+  });
 
 module.exports = router;
