@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 
 require('dotenv').config();
 
-if(process.env.JAWSDB_URL){
- const sequelize = new Sequelize(process.env.JAWSDB_URL);
+//if(process.env.JAWSDB_URL){
+ // const sequelize = new Sequelize(process.env.JAWSDB_URL);
  
-}else{
+//}else{
   // create connection to our db
 // use .env file for credentials
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
@@ -15,7 +15,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   
 });
 
-}
+// }
 
 
 module.exports = sequelize;
