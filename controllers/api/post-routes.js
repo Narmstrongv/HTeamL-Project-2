@@ -2,7 +2,6 @@ const router = require('express').Router();
 const {Post, User}= require('../../models');
 // GET /api/post
 router.get('/', (req, res) => {
-    // Access Post model
 
     Post.findAll({
         attributes: ['id', 'title', 'body', 'created_at'],
@@ -51,7 +50,6 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users
 router.post('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
     Post.create({
       title: req.body.title,
       post_url: req.body.body,
