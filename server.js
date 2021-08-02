@@ -1,6 +1,6 @@
 //basic server setup from 13.1.6
 //server opens on http://localhost:3003/api/etc.
-const path = require('path');
+
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -16,7 +16,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 // turn on routes, comes from ./controller
 app.use(routes);
