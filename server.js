@@ -5,12 +5,14 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
+const helpers = require('./utils/helpers');
 const expressHandlebars = require('express-handlebars')
+const hbs = expressHandlebars.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}))
+app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
