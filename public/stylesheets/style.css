@@ -190,6 +190,13 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 100px;
+}
+
+.card {
+  padding-bottom: 100px;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .post-card-title {
