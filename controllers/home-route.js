@@ -1,5 +1,6 @@
 const router = require('express').Router();
- 
+const sequelize = require('../config/connection');
+
 const {Post, User} = require('../models');
 const { restore } = require('../models/Post');
 const { post } = require('./api');
@@ -7,7 +8,7 @@ const { post } = require('./api');
 
 router.get('/', (req, res)=>{
     Post.findAll({
-
+        
     })
     .then(postData=>{
         const newPostData = postData.map(post=>{

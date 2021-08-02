@@ -8,10 +8,8 @@ const sequelize = require('./config/connection');
 
 
 const expressHandlebars = require('express-handlebars')
-
 const app = express();
 const PORT = process.env.PORT || 3003;
-
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
@@ -21,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // turn on routes, comes from ./controller
 app.use(routes);
-
 //turn on connection to db and server
 //.sync means SEQ takes models & connects them to assoc. DB tables
 //force: true will drop & recreate all DB tables on startup
