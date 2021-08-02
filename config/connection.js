@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 
 require('dotenv').config();
 
-//below may work now with JAWS defined
 
+//JAWS needed to be defined in .env in order to work
 if(process.env.JAWSDB_URL){
  const sequelize = new Sequelize(process.env.JAWSDB_URL);
  
