@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  background-color: #36474f;
 }
 
 body, html {
@@ -9,6 +8,14 @@ body, html {
   margin: 0;
   font-family: sans-serif;
   color: #c7b273;
+  background-image: url('../images/food-background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  background-color: #36474f;
+  border-radius: 20px;
 }
 
 a {
