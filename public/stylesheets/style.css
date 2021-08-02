@@ -186,4 +186,7 @@ footer {
 .footer {
   background-color: #36474f;
   margin-bottom: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
