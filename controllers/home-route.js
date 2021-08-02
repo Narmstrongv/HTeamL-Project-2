@@ -15,7 +15,9 @@ router.get('/', (req, res)=>{
         })
 
         res.render('homepage', { posts: newPostData})
-    })  
+    }).catch(err => {
+        console.error('Unable to load homepage:\n', err);
+      });  
 })
 
 
