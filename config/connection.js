@@ -14,7 +14,7 @@ require('dotenv').config();
 //   port: 3306
   
 // });
-const sequelize = new Sequelize('mysql://d4xa9m60m6ezu09z:ft7n8rqzlu855ylh@ckshdphy86qnz0bj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tzjuljd1cxf2clud')
+const sequelize = new Sequelize(process.env.JAWSDB_URL);
 
 sequelize.authenticate().then(() => {
   console.log('Connection to database has been established successfully.');
