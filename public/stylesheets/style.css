@@ -191,3 +191,12 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+.post-card-title {
+  background-color: #834655;
+}
+
+.post-card-body {
+  background-color: #c7b273;
+  color: #36474f;
+}
