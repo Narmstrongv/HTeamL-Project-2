@@ -4,12 +4,12 @@ const {Post, User}= require('../../models');
 router.get('/', (req, res) => {
 
     Post.findAll({
-        attributes: ['id', 'title', 'body', 'created_at'],
+        attributes: ['id', 'title', 'body', 'user_id'],
         order: [['created_at', 'DESC']], 
         include: [
           {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'twitter', 'github']
           }
         ]
       })
@@ -26,11 +26,11 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', , 'title', 'body', 'created_at'],
+      attributes: ['id', , 'title', 'body', 'user_id'],
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'twitter', 'github']
         }
       ]
     })
