@@ -3,24 +3,35 @@ const sequelize = require('../../config/connection');
 const {Post, User}= require('../../models');
 
 // GET /api/post
+var postdata = [
+  {
+      id: 1,
+      title: 'Mac N Cheese Remix',
+      body: 'Lorem Ipsum so lets get crazy. So often we avoid running water, and running water is a lot of fun. This is unplanned it really just happens. Its cold, but its beautiful.',
+      user_id: 1
+  },]; 
 router.get('/', (req, res) => {
 
-    Post.findAll({
-        attributes: ['id', 'title', 'body', 'user_id'],
-        //this is where SEQ is being called
-        //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-        include: [
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      })
-      .then(dbPostData => res.json(dbPostData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    // Post.findAll({
+    //     attributes: ['id', 'title', 'body', 'user_id'],
+    //     //this is where SEQ is being called
+    //     //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+    //     include: [
+    //       {
+    //         model: User,
+    //         attributes: ['username']
+    //       }
+    //     ]
+    //   })
+      // .then(dbPostData =>
+      //   //ignoring dbPostData because its empty.
+      //   res.render('homepage',postdata))
+      //     // res.json(postdata))
+      // .catch(err => {
+      //   console.log(err);
+      //   res.status(500).json(err);
+      // });
+      // res.render('homepage',postdata)
 });
 
 // GET /api/users/1

@@ -1,27 +1,20 @@
-{{!-- {{#each posts  }}
+<div>
+{{#each posts  }}
 
-{{> post-info posts }}
+{{title}}
+</br>
+{{body}}
+</br>
 </div>
 
 {{else}}
 <h6 class="pb-4 has-text-centered is-italic">No Posts Available</h6>
-{{/each}} --}}
+{{/each}}
 
-<ol class="post-list">
-  {{#each posts as |post|}}
-  <li>
-    <article class="post">
-      <div class="title">
-        <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
-        <span>({{post.post_url}})</span>
-      </div>
-      <div class="meta">
-        {{post.vote_count}} point(s) by {{post.user.username}} on
-        {{post.created_at}}
-        |
-        <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-      </div>
-    </article>
-  </li>
-  {{/each}}
-</ol>
+
+{{!-- hardcoding the data onto the main page --}}
+{{!-- {{title}}
+</br>
+{{body}}
+</br>
+</div> --}}
